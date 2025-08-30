@@ -7,38 +7,10 @@
     --fonte-principal: 'Merriweather', serif;
     --fonte-titulos: 'Lora', serif;
 }
-
-body {
-    background-color: var(--fundo-principal);
-    color: var(--texto-principal);
-    font-family: var(--fonte-principal);
-    line-height: 1.7;
-    margin: 0;
-    padding: 20px 0;
-}
-
-a {
-    color: var(--destaque-acao);
-    text-decoration: none;
-    transition: all 0.2s ease-in-out;
-}
-
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.main-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    padding-bottom: 20px;
-    border-bottom: 2px solid var(--fundo-secundario);
-    margin-bottom: 40px;
-}
-
+body { background-color: var(--fundo-principal); color: var(--texto-principal); font-family: var(--fonte-principal); line-height: 1.7; margin: 0; padding: 20px 0; }
+a { color: var(--destaque-acao); text-decoration: none; transition: all 0.2s ease-in-out; }
+.container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.main-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding-bottom: 20px; border-bottom: 2px solid var(--fundo-secundario); margin-bottom: 40px; }
 .main-header .logo h1 { margin: 0; font-size: 2.5em; }
 .main-header .logo h1 a { color: var(--titulos-meta); font-style: italic; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
 .main-header .logo a:hover { text-decoration: none; }
@@ -46,19 +18,7 @@ a {
 .main-nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 25px; }
 .main-nav a { font-family: var(--fonte-titulos); color: var(--texto-principal); font-weight: bold; font-size: 1.1em; }
 .main-nav a:hover { color: var(--destaque-acao); }
-
-.post-card {
-    display: flex;
-    gap: 30px;
-    background-color: rgba(255, 255, 255, 0.3);
-    padding: 20px;
-    border-radius: 5px;
-    margin-bottom: 30px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    transition: opacity 0.4s ease, transform 0.4s ease, height 0.4s ease, padding 0.4s ease, margin 0.4s ease;
-    overflow: hidden; /* Importante para a animação de altura */
-}
-
+.post-card { display: flex; gap: 30px; background-color: rgba(255, 255, 255, 0.3); padding: 20px; border-radius: 5px; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: opacity 0.4s ease, transform 0.4s ease; }
 .card-image { flex-shrink: 0; width: 250px; height: 200px; }
 .card-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; border: 3px solid white; }
 .card-content { display: flex; flex-direction: column; }
@@ -69,59 +29,20 @@ a {
 .card-title a:hover { color: var(--destaque-acao); }
 .card-excerpt { flex-grow: 1; margin: 0 0 15px 0; font-size: 0.95em; }
 .read-more { font-weight: bold; color: var(--destaque-acao); font-family: var(--fonte-titulos); }
-
 .main-footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--fundo-secundario); font-size: 0.9em; }
-
-/* --- SEÇÃO DO CRIADOR DE CARD (CORRIGIDA E MELHORADA) --- */
 .creator-section { margin-bottom: 40px; padding: 20px; background-color: rgba(0,0,0,0.05); border-radius: 5px; }
 #show-form-btn { background-color: var(--destaque-acao); color: white; border: none; padding: 10px 20px; font-size: 1em; font-family: var(--fonte-titulos); border-radius: 5px; cursor: pointer; transition: background-color 0.3s; }
 #show-form-btn:hover { background-color: #a5483f; }
-
-#create-card-form {
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid var(--fundo-secundario);
-    transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
-    overflow: hidden;
-}
-
+#create-card-form { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--fundo-secundario); }
 .form-group { margin-bottom: 15px; }
 .form-group label { display: block; margin-bottom: 5px; font-weight: bold; font-family: var(--fonte-titulos); color: var(--texto-principal); }
 .form-group input, .form-group select { width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid var(--fundo-secundario); border-radius: 4px; background-color: #fdfaf0; font-family: var(--fonte-principal); }
 .form-group input:focus, .form-group select:focus { border-color: var(--destaque-acao); outline: none; }
-
-#create-card-form button {
-    background-color: var(--destaque-acao);
-    color: white;
-    font-family: var(--fonte-titulos);
-    font-size: 1em;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-#create-card-form button:hover {
-    background-color: #a5483f;
-}
-
-/* --- ESTILOS PARA FILTRAGEM (CORRIGIDOS) --- */
+#create-card-form button { background-color: var(--destaque-acao); color: white; font-family: var(--fonte-titulos); font-size: 1em; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; transition: background-color 0.3s; }
+#create-card-form button:hover { background-color: #a5483f; }
 .main-nav .filter-btn.active { color: var(--destaque-acao); text-decoration: underline; }
 
-/* Classe para esconder os cards durante a filtragem */
-.post-card.hidden {
-    opacity: 0;
-    height: 0;
-    padding: 0;
-    margin: 0;
-    border: none;
-}
-
-/* Classe para esconder o formulário */
-#create-card-form.hidden {
-    max-height: 0;
-    opacity: 0;
-    margin-top: 0;
-    padding-top: 0;
-    border-top: none;
+/* Regra simplificada e garantida para esconder elementos */
+.hidden {
+    display: none;
 }
