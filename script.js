@@ -1,24 +1,38 @@
-// Aguarda o conteúdo da página ser totalmente carregado
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Seleciona todos os cards de post
-    const cards = document.querySelectorAll('.post-card');
+    // --- LÓGICA PARA MOSTRAR/ESCONDER O FORMULÁRIO ---
+    const showFormBtn = document.getElementById('show-form-btn');
+    const createCardForm = document.getElementById('create-card-form');
 
-    // Configura o "observador" que vai verificar quando um elemento entra na tela
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            // Se o card estiver visível na tela (intersecting)
-            if (entry.isIntersecting) {
-                // Adiciona a classe 'visible' para ativar a animação
-                entry.target.classList.add('visible');
-            }
-        });
-    }, {
-        threshold: 0.1 // A animação começa quando 10% do card estiver visível
+    showFormBtn.addEventListener('click', () => {
+        createCardForm.classList.toggle('hidden');
     });
 
-    // Pede ao observador para "observar" cada um dos cards
-    cards.forEach(card => {
-        observer.observe(card);
+    // --- LÓGICA PARA A FILTRAGEM DOS CARDS ---
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.post-card');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault(); // Impede o link de pular a página
+
+            // Remove a classe 'active' de todos os botões
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Adiciona a classe 'active' apenas no botão clicado
+            button.classList.add('active');
+
+            const filter = button.getAttribute('data-filter');
+
+            // Itera sobre cada card para decidir se ele deve ser mostrado ou escondido
+            cards.forEach(card => {
+                const category = card.getAttribute('data-category');
+
+                if (filter === 'all' || filter === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        });
     });
 });
