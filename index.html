@@ -14,7 +14,7 @@
     <div class="container">
         <header class="main-header">
             <div class="logo">
-                <h1><a href="#">Fragmentos de Tela</a></h1>
+                <h1><a href="index.html">Fragmentos de Tela</a></h1>
                 <p>Análises e teorias sobre obras de arte.</p>
             </div>
             <nav class="main-nav">
@@ -31,36 +31,17 @@
             <button id="show-form-btn">Criar Novo Card +</button>
             <form id="create-card-form" class="hidden">
                 <h3>Adicionar Nova Análise (Visual)</h3>
-                <div class="form-group">
-                    <label for="title">Título da Análise</label>
-                    <input type="text" id="title" placeholder="Ex: A Simbologia Oculta...">
-                </div>
-                <div class="form-group">
-                    <label for="subtitle">Subtítulo (Obra e Artista)</label>
-                    <input type="text" id="subtitle" placeholder="Ex: Análise sobre 'O Nascimento de Vênus'...">
-                </div>
-                <div class="form-group">
-                    <label for="image-url">URL da Imagem</label>
-                    <input type="url" id="image-url" placeholder="https://exemplo.com/imagem.jpg">
-                </div>
-                <div class="form-group">
-                    <label for="movement">Movimento Artístico</label>
-                    <select id="movement">
-                        <option value="renascimento">Renascimento</option>
-                        <option value="barroco">Barroco</option>
-                        <option value="romantismo">Romantismo</option>
-                    </select>
-                </div>
+                <div class="form-group"><label for="title">Título da Análise</label><input type="text" id="title"></div>
+                <div class="form-group"><label for="subtitle">Subtítulo (Obra e Artista)</label><input type="text" id="subtitle"></div>
+                <div class="form-group"><label for="image-url">URL da Imagem</label><input type="url" id="image-url"></div>
+                <div class="form-group"><label for="movement">Movimento Artístico</label><select id="movement"><option value="renascimento">Renascimento</option><option value="barroco">Barroco</option><option value="romantismo">Romantismo</option></select></div>
                 <button type="submit">Adicionar Card (Apenas Visual)</button>
             </form>
         </section>
 
-
         <main id="card-container">
             <article class="post-card" data-category="renascimento">
-                <div class="card-image">
-                    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg/800px-Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg" alt="Pintura O Nascimento de Vênus"></a>
-                </div>
+                <div class="card-image"><a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg/800px-Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg" alt="Pintura O Nascimento de Vênus"></a></div>
                 <div class="card-content">
                     <div class="card-tag"><a href="#">Renascimento</a></div>
                     <h2 class="card-title"><a href="#">A Simbologia Oculta em 'O Nascimento de Vênus'</a></h2>
@@ -68,11 +49,8 @@
                     <a href="#" class="read-more">Ler análise completa &rarr;</a>
                 </div>
             </article>
-
             <article class="post-card" data-category="barroco">
-                <div class="card-image">
-                    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/The_Night_Watch_-_HD.jpg/800px-The_Night_Watch_-_HD.jpg" alt="Pintura A Ronda Noturna"></a>
-                </div>
+                <div class="card-image"><a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/The_Night_Watch_-_HD.jpg/800px-The_Night_Watch_-_HD.jpg" alt="Pintura A Ronda Noturna"></a></div>
                 <div class="card-content">
                     <div class="card-tag"><a href="#">Barroco</a></div>
                     <h2 class="card-title"><a href="#">Luz e Sombra: O Contraste na 'Ronda Noturna'</a></h2>
@@ -80,11 +58,8 @@
                     <a href="#" class="read-more">Ler análise completa &rarr;</a>
                 </div>
             </article>
-
             <article class="post-card" data-category="romantismo">
-                <div class="card-image">
-                    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg/800px-Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg" alt="Pintura O Viajante sobre o Mar de Névoa"></a>
-                </div>
+                <div class="card-image"><a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg/800px-Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg" alt="Pintura O Viajante sobre o Mar de Névoa"></a></div>
                 <div class="card-content">
                     <div class="card-tag"><a href="#">Romantismo</a></div>
                     <h2 class="card-title"><a href="#">O Sublime em 'O Viajante sobre o Mar de Névoa'</a></h2>
@@ -92,12 +67,10 @@
                     <a href="#" class="read-more">Ler análise completa &rarr;</a>
                 </div>
             </article>
-
         </main>
         
         <footer class="main-footer"><p>&copy; 2025 - Fragmentos de Tela</p></footer>
     </div>
-
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
 </body>
 </html>
