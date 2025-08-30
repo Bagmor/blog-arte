@@ -55,7 +55,8 @@ a {
     border-radius: 5px;
     margin-bottom: 30px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition: opacity 0.4s ease, transform 0.4s ease, height 0.4s ease, padding 0.4s ease, margin 0.4s ease;
+    overflow: hidden; /* Importante para a animação de altura */
 }
 
 .card-image { flex-shrink: 0; width: 250px; height: 200px; }
@@ -71,15 +72,56 @@ a {
 
 .main-footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--fundo-secundario); font-size: 0.9em; }
 
-/* --- NOVOS ESTILOS --- */
+/* --- SEÇÃO DO CRIADOR DE CARD (CORRIGIDA E MELHORADA) --- */
 .creator-section { margin-bottom: 40px; padding: 20px; background-color: rgba(0,0,0,0.05); border-radius: 5px; }
 #show-form-btn { background-color: var(--destaque-acao); color: white; border: none; padding: 10px 20px; font-size: 1em; font-family: var(--fonte-titulos); border-radius: 5px; cursor: pointer; transition: background-color 0.3s; }
 #show-form-btn:hover { background-color: #a5483f; }
-#create-card-form { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--fundo-secundario); }
+
+#create-card-form {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--fundo-secundario);
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+    overflow: hidden;
+}
+
 .form-group { margin-bottom: 15px; }
-.form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
-.form-group input, .form-group select { width: 100%; padding: 8px; border: 1px solid var(--fundo-secundario); border-radius: 4px; background-color: #fff; }
-#create-card-form button { background-color: var(--texto-principal); color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; }
+.form-group label { display: block; margin-bottom: 5px; font-weight: bold; font-family: var(--fonte-titulos); color: var(--texto-principal); }
+.form-group input, .form-group select { width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid var(--fundo-secundario); border-radius: 4px; background-color: #fdfaf0; font-family: var(--fonte-principal); }
+.form-group input:focus, .form-group select:focus { border-color: var(--destaque-acao); outline: none; }
+
+#create-card-form button {
+    background-color: var(--destaque-acao);
+    color: white;
+    font-family: var(--fonte-titulos);
+    font-size: 1em;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+#create-card-form button:hover {
+    background-color: #a5483f;
+}
+
+/* --- ESTILOS PARA FILTRAGEM (CORRIGIDOS) --- */
 .main-nav .filter-btn.active { color: var(--destaque-acao); text-decoration: underline; }
-.post-card.hidden { opacity: 0; transform: scale(0.95); font-size: 0; height: 0; padding: 0; margin: 0; border: none; }
-.hidden { display: none; }
+
+/* Classe para esconder os cards durante a filtragem */
+.post-card.hidden {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+/* Classe para esconder o formulário */
+#create-card-form.hidden {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
