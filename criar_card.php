@@ -1,42 +1,41 @@
 <?php
-// Inclui nosso arquivo de conexão com o banco de dados
 require_once 'conexao.php';
 
-// Pega os dados JSON que o JavaScript enviou
 $data = json_decode(file_get_contents('php://input'), true);
 
-// Validação simples para garantir que recebemos um título
-if (empty($data['title'])) {
-    http_response_code(400); // Erro de "Requisição Inválida"
-    echo json_encode(['success' => false, 'message' => 'O título é obrigatório.']);
-    exit(); // Para a execução
+if (empty($data['title']) || empty($data['imageUrl']) || empty($data['subtitle'])) {
+    http_response_code(400);
+    echo json_encode(['success' => false, 'message' => 'Dados incompletos.']);
+    exit();
 }
 
 try {
-    // Para este exemplo, vamos assumir que toda nova análise é sobre a Obra de ID = 1
-    // (O Nascimento de Vênus). Um sistema completo teria uma seleção de obras.
-    $obra_id_fixo = 1; 
+    $sql_obra = "INSERT INTO obras (titulo_obra, nome_artista, url_imagem, movimento_id) VALUES (:titulo_obra, :nome_artista, :url_imagem, :movimento_id)";
+    $stmt_obra = $pdo->prepare($sql_obra);
+    
+    $stmt_obra->execute([
+        ':titulo_obra' => $data['subtitle'],
+        ':nome_artista' => 'Artista Desconhecido',
+        ':url_imagem' => $data['imageUrl'],
+        ':movimento_id' => 1 
+    ]);
+    
+    $novaObraId = $pdo->lastInsertId();
 
-    // Comando SQL com "prepared statements" para segurança máxima contra SQL Injection
-    $sql = "INSERT INTO analises (titulo_analise, conteudo_analise, nome_autor, obra_id) VALUES (:titulo, :conteudo, :autor, :obra_id)";
-
-    $stmt = $pdo->prepare($sql);
-
-    // Executa o comando, trocando os placeholders (:titulo, etc.) pelos dados reais
-    $stmt->execute([
-        ':titulo' => $data['title'],
-        ':conteudo' => $data['subtitle'],
-        ':autor' => 'Visitante', // Podemos definir um autor padrão
-        ':obra_id' => $obra_id_fixo
+    $sql_analise = "INSERT INTO analises (titulo_analise, conteudo_analise, nome_autor, obra_id) VALUES (:titulo_analise, :conteudo_analise, :nome_autor, :obra_id)";
+    $stmt_analise = $pdo->prepare($sql_analise);
+    
+    $stmt_analise->execute([
+        ':titulo_analise' => $data['title'],
+        ':conteudo_analise' => $data['subtitle'],
+        ':nome_autor' => 'Visitante',
+        ':obra_id' => $novaObraId 
     ]);
 
-    // Se a execução foi bem-sucedida, envia uma resposta de sucesso
     echo json_encode(['success' => true, 'message' => 'Card criado com sucesso!']);
 
 } catch (PDOException $e) {
-    // Se deu algum erro no banco, envia uma resposta de erro
-    http_response_code(500); // Erro Interno do Servidor
-    echo json_encode(['success' => false, 'message' => 'Erro ao salvar no banco de dados.']);
+    http_response_code(500);
+    echo json_encode(['success' => false, 'message' => 'Erro no servidor: ' . $e->getMessage()]);
 }
 ?>
-
