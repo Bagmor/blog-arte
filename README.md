@@ -87,7 +87,8 @@ Faça login com o usuário root e a senha que você definiu.
 Clique na aba "SQL".
 Execute os dois comandos SQL abaixo. O primeiro apaga completamente o banco de dados antigo e o segundo recria tudo do zero, sem erros.
 
-# Execute o comandos SQL abaixo. O primeiro apaga completamente o banco de dados antigo e o segundo recria tudo do zero, sem erros.
+## Execute o comandos SQL abaixo. 
+O primeiro apaga completamente o banco de dados antigo e o segundo recria tudo do zero, sem erros.
 
 ```sql
 DROP DATABASE IF EXISTS `blog_arte_db`;
